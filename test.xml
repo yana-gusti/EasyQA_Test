@@ -3,8 +3,8 @@
 <suite name="Suite1" verbose="1" >
     <test name="Nopackage" >
         <classes>
-            <class name="Tests.LoginTest" />
-            <class name="Tests.MyProfileTest" />
+            <class name="Tests.Profile.LoginTest" />
+            <class name="Tests.Profile.MyProfileTest" />
         </classes>
     </test>
 
