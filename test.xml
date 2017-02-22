@@ -5,6 +5,11 @@
         <classes>
             <class name="Tests.Profile.LoginTest" />
             <class name="Tests.Profile.MyProfileTest" />
+            <class name="Tests.Organizations.AddOrganizationTest" />
+            <class name="Tests.Project.ProjectTests" />
+            <class name="Tests.Issues.IssueTest" />
+            <class name="Tests.TestPlanTests.CreateTestplan" />
+            <class name="Tests.TestPlanTests.CreateTestcase" />
         </classes>
     </test>
 

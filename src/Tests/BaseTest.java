@@ -17,6 +17,7 @@ public class BaseTest {
     public void SetUp(){
         System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
         driver = new ChromeDriver();
+        driver.get(baseUrl + "/users/sign_in");
         driver.manage().window().maximize();
     }
 
