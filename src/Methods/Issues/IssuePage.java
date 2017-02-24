@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class IssuePage {
 
 
-    public static void addIssue(WebDriver driver) throws InterruptedException {
+    public void addIssue(WebDriver driver) throws InterruptedException {
         driver.findElement(By.linkText("My Projects")).click();
         driver.findElement(By.linkText("testing EasyQa")).click();
         Thread.sleep(1000);
@@ -23,7 +24,7 @@ public class IssuePage {
         Thread.sleep(5000);
     }
 
-    public static void createIssue(WebDriver driver) throws InterruptedException {
+    public void createIssue(WebDriver driver) throws InterruptedException {
         Thread.sleep(500);
         driver.findElement(By.linkText("My Projects")).click();
         Thread.sleep(500);
@@ -46,12 +47,12 @@ public class IssuePage {
         Thread.sleep(500);
         driver.findElement(By.xpath(".//*[@id='priority-view']/div/a")).click();
         Thread.sleep(500);
-        driver.findElement(By.xpath("//div[@id='priority-view']/ul/li[4]/a")).click();
+        driver.findElement(By.xpath(".//*[@id='priority-view']/ul/li[4]/a")).click();
         Thread.sleep(500);
         driver.findElement(By.name("commit")).click();
     }
 
-    public static void uploadFile(WebDriver driver) throws InterruptedException {
+    public void uploadFile(WebDriver driver) throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.findElement(By.linkText("My Projects")).click();
         Thread.sleep(1000);
@@ -65,16 +66,17 @@ public class IssuePage {
         driver.findElement(By.linkText("Medium")).click();
         driver.findElement(By.linkText("High")).click();
         driver.findElement(By.cssSelector("#priority-view > div.dd-select > a.dd-selected")).click();
-        driver.findElement(By.xpath("//div[@id='priority-view']/ul/li[4]/a")).click();
-    }
-
-    public static void attachFile(WebDriver driver) throws InterruptedException {
+        driver.findElement(By.xpath("//div[@id='priority-view']/ul/li[last()-1]/a")).click();
         WebElement attach = driver.findElement(By.xpath("//input[@type='file']"));
         attach.sendKeys("/media/asus/New/index.png");
-        driver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//input[@type='submit']")).click();
+//        driver.findElement(By.linkText("Cancel"));
+        Thread.sleep(2000);
     }
 
-    public static void addColumns(WebDriver driver) throws InterruptedException {
+
+    public void addColumns(WebDriver driver) throws InterruptedException {
         driver.findElement(By.linkText("My Projects")).click();
         Thread.sleep(1000);
         driver.findElement(By.linkText("testing EasyQa")).click();
@@ -83,11 +85,11 @@ public class IssuePage {
         Thread.sleep(5000);
         Actions action = new Actions(driver);
         action.doubleClick(driver.findElement(By.xpath(".//*/div[8]/div[1]/span"))).doubleClick().build().perform();
-        driver.findElement(By.xpath(".//*/div[8]/div[1]/div/input")).sendKeys("Test");
+        driver.findElement(By.xpath("//input[@value='New status']")).sendKeys("Test");
         Thread.sleep(2000);
     }
 
-    public static void addColumn(WebDriver driver) throws InterruptedException {
+    public void addColumn(WebDriver driver) throws InterruptedException {
         driver.findElement(By.linkText("My Projects")).click();
         Thread.sleep(1000);
         driver.findElement(By.linkText("testing EasyQa")).click();
@@ -95,7 +97,7 @@ public class IssuePage {
         driver.findElement(By.cssSelector(".btn.btn-green.add-column")).click();
     }
 
-    public static void  deleteIssue (WebDriver driver) throws InterruptedException {
+    public void  deleteIssue (WebDriver driver) throws InterruptedException {
         Thread.sleep(5000);
         Actions action = new Actions(driver);
         action.doubleClick(driver.findElement(By.cssSelector(".card_message"))).doubleClick().build().perform();
@@ -105,17 +107,18 @@ public class IssuePage {
         driver.switchTo().alert().accept();
         // the rest of the scripts can be added here
         Thread.sleep(2000);
+        driver.navigate().refresh();
+        Assert.assertTrue(driver.findElements(By.xpath("//div[@data-status-name='Submited']")).size() > 0);
     }
 
-    public static void deleteColumn(WebDriver driver) throws InterruptedException {
+    public void deleteColumn(WebDriver driver) throws InterruptedException {
         Thread.sleep(5000);
-        WebElement from = driver.findElement(By.xpath(".//*/div/div[8]/div[1]/span"));
-        WebElement to = driver.findElement(By.xpath(".//*/div[1]/div/div[2]/div/div/div/div[1]/div/div[1]/div[3]/div[3]/span"));
+        WebElement from = driver.findElement(By.xpath("//div/div[8]/div[1]"));
+        WebElement to = driver.findElement(By.xpath("//div[@class='remove-column ui-droppable']"));
         new Actions(driver).dragAndDrop(from, to).perform();
-        Thread.sleep(5000);
     }
 
-    public static void hideColumn(WebDriver driver) throws InterruptedException {
+    public void hideColumn(WebDriver driver) throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.findElement(By.linkText("My Projects")).click();
         Thread.sleep(1000);
@@ -125,7 +128,7 @@ public class IssuePage {
         Thread.sleep(2000);
     }
 
-    public static void searchIssue(WebDriver driver){
+    public void searchIssue(WebDriver driver){
         driver.findElement(By.xpath("//input[@id='search']")). sendKeys("Test Symphony");
         driver.findElement(By.cssSelector(".search-btn")).click();
     }

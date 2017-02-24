@@ -21,7 +21,7 @@ public class LoginTest extends BaseTest {
     public void correctLogin() throws InterruptedIOException, InterruptedException {
 
         LoginPage loginPage=new LoginPage();
-        loginPage.login(driver,"focus5080+44@gmail.com", "focus5080");
+        loginPage.login(driver,email,password);
         LoginPage.logout(driver);
 
     }

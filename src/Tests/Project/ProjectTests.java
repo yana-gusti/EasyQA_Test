@@ -1,68 +1,109 @@
 package Tests.Project;
-
 import Methods.Profile.LoginPage;
 import Methods.Project.AttachFile;
 import Methods.Project.Project;
 import Tests.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-
 import java.io.InterruptedIOException;
-
-import static org.testng.Assert.assertTrue;
-
 
 public class ProjectTests extends BaseTest {
     @Test
     public void project() throws InterruptedIOException {
-
         LoginPage loginPage = new LoginPage();
         loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
         Project project = new Project();
         project.project(driver);
     }
-
     @Test
-    public void createwithoutorgan() throws InterruptedIOException {
-
+    public void withoutOrgan() throws InterruptedIOException, InterruptedException {
         LoginPage loginPage = new LoginPage();
         loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
         Project project = new Project();
-        project.createwithoutorgan(driver);
-        WebElement errorMessage = driver.findElement(By.xpath("html/body/div[1]/div[1]/div[2]/div/div/div[2]/form/div/div[1]/div[1]/div/label"));
-        assertTrue(errorMessage.getText().contains("can't be blank"));
+        project.withoutOrgan(driver);
     }
-
     @Test
-    public void MaxSymbolsproject() throws InterruptedIOException {
-
+    public void MaxSymbols() throws InterruptedIOException, InterruptedException {
         LoginPage loginPage = new LoginPage();
         loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
         Project project = new Project();
-        project.MaxSymbolsproject(driver);
-        WebElement errorMessage = driver.findElement(By.xpath("html/body/div[1]/div[1]/div[2]/div/div/div[2]/form/div/div[1]/div[3]/div[2]/label"));
-        assertTrue(errorMessage.getText().contains("is too long (maximum is 150 characters)"));
+        project.MaxSymbols(driver);
     }
-
     @Test
     public void Upload() throws InterruptedIOException, InterruptedException {
-
         LoginPage loginPage = new LoginPage();
         loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
         Project project = new Project();
         project.Upload(driver);
         AttachFile attachFile = new AttachFile();
-        attachFile.attachFileToLead(driver);
+        attachFile.attachFileToLoad(driver);
+        Thread.sleep(4000);
+        driver.findElement(By.name("commit")).click();
     }
-
+    @Test
+    public void UploadAndDelete() throws InterruptedIOException, InterruptedException {
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
+        Project project = new Project();
+        project.UploadAndDelete(driver);
+        AttachFile attachFile = new AttachFile();
+        attachFile.attachFileToLoad(driver);
+    }
     @Test
     public void changeDescription() throws InterruptedIOException, InterruptedException {
-
         LoginPage loginPage = new LoginPage();
         loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
         Project project = new Project();
         project.changeDescription(driver);
-
+    }
+    @Test
+    public void AddPlatform() throws InterruptedIOException, InterruptedException {
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
+        Project project = new Project();
+        project.AddPlatform(driver);
+        driver.findElement(By.name("commit"));
+    }
+    @Test
+    public void addMembers() throws InterruptedIOException, InterruptedException {
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
+        Project project = new Project();
+        project.addMembers(driver);
+    }
+    @Test
+    public void changeViewer() throws InterruptedIOException, InterruptedException {
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
+        Project project = new Project();
+        project.changeViewer(driver);
+    }
+    @Test
+    public void changeDeveloper() throws InterruptedIOException, InterruptedException {
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
+        Project project = new Project();
+        project.changeDeveloper(driver);
+    }
+    @Test
+    public void changeTester() throws InterruptedIOException, InterruptedException {
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
+        Project project = new Project();
+        project.changeTester(driver);
+    }
+    @Test
+    public void changeManager() throws InterruptedIOException, InterruptedException {
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
+        Project project = new Project();
+        project.changeManager(driver);
+    }
+    @Test
+    public void deleteProject() throws InterruptedIOException, InterruptedException {
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(driver, "viktor.hryhorevskiy@thinkmobiles.com", "vitya9595");
+        Project project = new Project();
+        project.deleteProject(driver);
     }
 }

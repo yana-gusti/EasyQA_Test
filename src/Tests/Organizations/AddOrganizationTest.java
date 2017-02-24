@@ -29,7 +29,7 @@ public class AddOrganizationTest extends BaseTest {
     @Test
     public void DeleteOrganization() throws InterruptedException {
         LoginPage loginPage = new LoginPage();
-        loginPage.login(driver, "focus5080+44@gmail.com", "focus5080");
+        loginPage.login(driver, email, password);
         Thread.sleep(2000);
         try {
             dp.OpenMyOrganizations(driver, _organization_title);

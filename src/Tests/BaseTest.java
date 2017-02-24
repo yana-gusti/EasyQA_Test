@@ -12,6 +12,8 @@ public class BaseTest {
 
     public WebDriver driver;
     public String baseUrl = "http://qa_dashboard.test.thinkmobiles.com:8085";
+    public String email = "vasiliy.fedortsi@thinkmobiles.com";
+    public String password = "111111";
 
     @BeforeMethod
     public void SetUp(){
