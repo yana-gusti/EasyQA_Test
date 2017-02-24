@@ -57,11 +57,11 @@ public class MyProfile {
         Thread.sleep(2000);
     }
 
-    public void changePassword(WebDriver driver) throws InterruptedException {
+    public void changePassword(WebDriver driver, String pass) throws InterruptedException {
         driver.findElement(By.xpath(".//*/div/ul/li[2]/a/span")).click();
-        driver.findElement(By.id("current_password")).sendKeys("111111");
-        driver.findElement(By.id("user_password")).sendKeys("111111");
-        driver.findElement(By.id("user_password_confirmation")).sendKeys("111111");
+        driver.findElement(By.id("current_password")).sendKeys(pass);
+        driver.findElement(By.id("user_password")).sendKeys(pass);
+        driver.findElement(By.id("user_password_confirmation")).sendKeys(pass);
         driver.findElement(By.id("user_password_confirmation")).submit();
         WebElement errorMessage = driver.findElement(By.id("personal_info_notice"));
         errorMessage.getText().contains("Password updated");

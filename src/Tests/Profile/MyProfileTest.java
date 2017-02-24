@@ -69,7 +69,7 @@ public class MyProfileTest extends BaseTest {
         loginPage.login(driver, email, password);
         MyProfile myProfilePage = new MyProfile();
         myProfilePage.showProfile(driver);
-        myProfilePage.changePassword(driver);
+        myProfilePage.changePassword(driver, password);
         Thread.sleep(5000);
         loginPage.logout(driver);
     }
