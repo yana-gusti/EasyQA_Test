@@ -1,6 +1,5 @@
 package Tests.Integrations;
 
-
 import Methods.Integrations.*;
 import Methods.Profile.LoginPage;
 import Tests.BaseTest;

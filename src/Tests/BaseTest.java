@@ -1,5 +1,6 @@
 package Tests;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -19,10 +20,11 @@ public class BaseTest {
 
     @BeforeMethod
     public void SetUp(){
-        System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "./drivers/for mac/chromedriver");
         driver = new ChromeDriver();
         driver.get(baseUrl + "/users/sign_in");
         driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1280, 768));
     }
 
     @AfterMethod

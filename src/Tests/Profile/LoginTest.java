@@ -22,7 +22,6 @@ public class LoginTest extends BaseTest {
 
         LoginPage loginPage=new LoginPage();
         loginPage.login(driver,email,password);
-        LoginPage.logout(driver);
 
     }
 

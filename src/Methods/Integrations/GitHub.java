@@ -9,12 +9,30 @@ import org.openqa.selenium.WebDriver;
 public class GitHub {
 
     public void addHub(WebDriver driver){
-        driver.findElement(By.linkText("Please choose integration plugin")).click();
+        driver.findElement(By.cssSelector("label.dd-selected-text")).click();
         driver.findElement(By.linkText("Git Hub")).click();
+        driver.findElement(By.id("git_hub_setting_repository_url")).click();
         driver.findElement(By.id("git_hub_setting_repository_url")).clear();
-        driver.findElement(By.id("git_hub_setting_repository_url")).sendKeys("https://github.com/EvtSasha/SuperTest");
+        driver.findElement(By.id("git_hub_setting_repository_url")).sendKeys("https://github.com/test-thinkmobile/testing");
+        driver.findElement(By.id("git_hub_setting_access_token")).click();
+        driver.findElement(By.id("git_hub_setting_access_token")).click();
         driver.findElement(By.id("git_hub_setting_access_token")).clear();
-        driver.findElement(By.id("git_hub_setting_access_token")).sendKeys("44bc19a08fa51c8ecd142f801de3f824ede002fc");
+        driver.findElement(By.id("git_hub_setting_access_token")).sendKeys("ee8dbce1f5961e630d9776863f7e35f08851c312");
+        driver.findElement(By.name("commit")).click();
+    }
+
+
+
+    public void failHub (WebDriver driver){
+        driver.findElement(By.cssSelector("label.dd-selected-text")).click();
+        driver.findElement(By.linkText("Git Hub")).click();
+        driver.findElement(By.id("git_hub_setting_repository_url")).click();
+        driver.findElement(By.id("git_hub_setting_repository_url")).clear();
+        driver.findElement(By.id("git_hub_setting_repository_url")).sendKeys("https://github.com/test-thinkmobile/testing");
+        driver.findElement(By.id("git_hub_setting_access_token")).click();
+        driver.findElement(By.id("git_hub_setting_access_token")).click();
+        driver.findElement(By.id("git_hub_setting_access_token")).clear();
+        driver.findElement(By.id("git_hub_setting_access_token")).sendKeys("ee8dbce1f5961e630d9776863f7e35f08851c312234");
         driver.findElement(By.name("commit")).click();
     }
 }
